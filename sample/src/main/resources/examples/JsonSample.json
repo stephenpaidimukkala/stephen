@@ -1,0 +1,19 @@
+{
+	"squadName": "Super Hero Squad",
+	"homeTown": "Metro City",
+	"active":"true",
+	"members": [
+			{
+				"name": "ABC",
+				"powers": [
+						"Radiation","Turning","Blast"
+					  ]
+			},
+			{
+				"name": "XYZ",
+				"powers": [
+						"Radiation11","Turning11","Blast11"
+					  ]
+			}
+		   ]
+}

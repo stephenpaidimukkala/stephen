@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="617872b1-0936-4b48-990b-295a80664cc4" >
+		<http:listener-connection host="localhost" port="8085" />
+	</http:listener-config>
+	<flow name="uriandpathparamsFlow" doc:id="eac8bb3d-5fe0-4422-89fe-28e20e9d65d4" >
+		<http:listener doc:name="Listener" doc:id="d79e5769-4d57-4f72-a8ce-425cf2caecc3" config-ref="HTTP_Listener_config" path="/a/{Name}/{City}"/>
+		<set-payload value='#[" FName : " ++ message.attributes.uriParams.Name ++ " Location : " ++  attributes.uriParams.City]' doc:name="Set Payload" doc:id="9e23e17f-b692-40b3-849b-e90e53fc6854" />
+		<logger level="INFO" doc:name="Logger" doc:id="a57d24ec-906d-4064-80f9-18a97fd49475" message="#[payload]"/>
+	</flow>
+</mule>

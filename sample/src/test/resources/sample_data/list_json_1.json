@@ -1,0 +1,27 @@
+[
+	{
+		"category" : "books",
+		"area" : "usa",
+		"stock" : 100
+	},
+	{
+		"category" : "books",
+		"area" : "usa",
+		"stock" : 200
+	},
+	{
+		"category" : "veggie",
+		"area" : "usa",
+		"stock" : 10
+	},
+	{
+		"category" : "toys",
+		"area" : "usa",
+		"stock" : 5000
+	},
+	{
+		"category" : "toys",
+		"area" : "uk",
+		"stock" : 6000
+	}
+]

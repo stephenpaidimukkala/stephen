@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="A" format="json">
+      <types:shape format="weave" example="examples/JsonSample.json"><![CDATA[%dw 2.0
+
+type A = {|
+  squadName: String, 
+  homeTown: String, 
+  active: String, 
+  members: Array<{|    name: String,     powers: Array<String>
+  |}>
+|} {"example": "{\\\"squadName\\\":\\\"Super Hero Squad\\\",\\\"homeTown\\\":\\\"Metro City\\\",\\\"active\\\":\\\"true\\\",\\\"members\\\":[{\\\"name\\\":\\\"ABC\\\",\\\"powers\\\":[\\\"Radiation\\\",\\\"Turning\\\",\\\"Blast\\\"]},{\\\"name\\\":\\\"XYZ\\\",\\\"powers\\\":[\\\"Radiation11\\\",\\\"Turning11\\\",\\\"Blast11\\\"]}]}"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="BP2" format="json">
+      <types:shape format="weave" example="examples/BP2-2.json"><![CDATA[%dw 2.0
+
+type BP2 = Array<{|  category: String,   unit: String,   stock: Array<{|    count: Number {"typeId": "int"},     label: String  |}>
+|}> {"example": "[{\\\"category\\\":\\\"books\\\",\\\"unit\\\":\\\"NA\\\",\\\"stock\\\":[{\\\"count\\\":1,\\\"label\\\":\\\"java\\\"},{\\\"count\\\":3,\\\"label\\\":\\\"mule\\\"},{\\\"count\\\":5,\\\"label\\\":\\\"design patterns\\\"}]},{\\\"category\\\":\\\"veggies\\\",\\\"unit\\\":\\\"KG\\\",\\\"stock\\\":[{\\\"count\\\":100,\\\"label\\\":\\\"lady finger\\\"},{\\\"count\\\":40,\\\"label\\\":\\\"brinjal\\\"}]},{\\\"category\\\":\\\"Toys\\\",\\\"unit\\\":\\\"NA\\\",\\\"stock\\\":[{\\\"count\\\":10,\\\"label\\\":\\\"car\\\"},{\\\"count\\\":50,\\\"label\\\":\\\"bike\\\"}]}]"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="BP3" format="json">
+      <types:shape format="weave" example="examples/BP3.json"><![CDATA[%dw 2.0
+
+type BP3 = Array<{|  category: String,   area: String,   stock: Number {"typeId": "int"}|}> {"example": "[{\\\"category\\\":\\\"books\\\",\\\"area\\\":\\\"usa\\\",\\\"stock\\\":100},{\\\"category\\\":\\\"books\\\",\\\"area\\\":\\\"usa\\\",\\\"stock\\\":200},{\\\"category\\\":\\\"veggie\\\",\\\"area\\\":\\\"usa\\\",\\\"stock\\\":10},{\\\"category\\\":\\\"toys\\\",\\\"area\\\":\\\"usa\\\",\\\"stock\\\":5000},{\\\"category\\\":\\\"toys\\\",\\\"area\\\":\\\"uk\\\",\\\"stock\\\":6000}]"}
+
+]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#543c4cde-7e92-4bb6-80ec-8a2b9814906e">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="A"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#1251ec71-da44-4ac0-ad62-d5d3b399b3e2">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="BP2"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#bae92615-6e06-486e-8707-3f9029c9868c">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="BP3"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>

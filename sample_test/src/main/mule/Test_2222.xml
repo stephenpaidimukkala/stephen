@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
-	<flow name="Test_2222Flow" doc:id="ce67d4e1-1f95-43cf-bf1e-e7f8b576c2d9" >
-		<logger level="INFO" doc:name="Logger" doc:id="07994a02-f314-4f4d-aa57-e49d06aa6e35" message="hi 222"/>
-	</flow>
-</mule>
