@@ -1,0 +1,23 @@
+{
+	"squadName": "Super Hero Squad",
+	"homeTown": "Metro City",
+	"active":"true",
+	"members": [
+			{
+				"name": "ABC",
+				"age": 2,
+				"secretID":"unknown",
+				"powers": [
+						"Radiation","Turning","Blast"
+					  ]
+			},
+			{
+				"name": "XYZ",
+				"age": 2,
+				"secretID":"A213",
+				"powers": [
+						"Radiation11","Turning11","Blast11"
+					  ]
+			}
+		   ]
+}

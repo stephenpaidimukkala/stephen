@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="92e06614-dd80-4b2a-9943-a52e7e47f3c1" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="samplecalFlow" doc:id="97142832-2121-4978-85e2-91665a21a65a" >
+		<http:listener doc:name="Listener" doc:id="ae981e03-b372-47b4-aaba-3605660167d6" config-ref="HTTP_Listener_config" path="/samplecal"/>
+		<choice doc:name="Choice" doc:id="342bc9e2-6fda-4640-8087-a0995bc31b64" >
+			<when expression='#[attributes.queryParams."operator" as String == "subtraction"]'>
+				<ee:transform doc:name="Transform Message" doc:id="0aeee0bc-27d3-4894-94a7-e8bdedbdb695" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+"Operation Performed : " ++ attributes.queryParams."operator" ++
+". Result is " ++ (attributes.queryParams."a" * attributes.queryParams."b") ]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
+			</when>
+			<when expression='#[attributes.queryParams."operator" as String == "Addition"]'>
+				<ee:transform doc:name="Transform Message" doc:id="c5ff877e-f2c8-44a4-8fc2-6f4426b46cd6" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+"Operator is :" ++ attributes.queryParams."operator" ++ 
+"." ++ (attributes.queryParams."a" + attributes.queryParams."b")]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
+			</when>
+			<otherwise >
+				<logger level="INFO" doc:name="Logger" doc:id="d6284a5c-4cf6-4a0d-9ecb-9cd3d61ebbc5" message="Default"/>
+			</otherwise>
+		</choice>
+	</flow>
+</mule>

@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="jsonEmp" format="json">
+      <types:shape format="weave" example="examples/JsonEMP.json"><![CDATA[%dw 2.0
+
+type jsonEmp = {|
+  empId: String, 
+  empName: String, 
+  empStatus: String
+|} {"example": "{\\\"empId\\\":\\\"661\\\",\\\"empName\\\":\\\"Stephen\\\",\\\"empStatus\\\":\\\"Active\\\"}"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="aa" format="xml">
+      <types:example format="xml" element="book" location="examples/emp-1.xml"/>
+    </types:type>
+    <types:type name="bb" format="json">
+      <types:shape format="weave" example="examples/json.json"><![CDATA[%dw 2.0
+
+type bb = {|
+  item: {|
+    "type": String, 
+    price: Number {"typeId": "int"}, 
+    properties: {|
+      title: String, 
+      author: Array<String>, 
+      year: Number {"typeId": "int"}, 
+      language: String
+    |}
+  |}
+|} {"example": "{\\\"item\\\":{\\\"type\\\":\\\"book\\\",\\\"price\\\":30,\\\"properties\\\":{\\\"title\\\":\\\"Everyday Italian\\\",\\\"author\\\":[\\\"Giada De\\\"],\\\"year\\\":2000,\\\"language\\\":\\\"en\\\"}}}"}
+
+]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#bfb07230-c20c-41ec-88f9-94cd0f08c973">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="aa"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#c533a464-93a5-4f36-8a02-f311d276c406">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="aa"/>
+        </types:message>
+      </types:input-event>
+      <types:output-event>
+        <types:message>
+          <types:payload type="bb"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>

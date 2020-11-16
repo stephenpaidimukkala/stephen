@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="4787cd6c-7325-4b1f-8855-c22fa2c8f0a2" >
+		<http:listener-connection host="localhost" port="8085" />
+	</http:listener-config>
+	<flow name="munittestFlow" doc:id="57adc527-6c97-47e2-ae55-452e791f3bb5" >
+		<http:listener doc:name="Listener" doc:id="91bab7a8-c1ee-4cc6-bd28-64e547553894" config-ref="HTTP_Listener_config" path="/munittest"/>
+		<logger level="INFO" doc:name="Logger" doc:id="6a20eaab-8f61-4d5b-b535-d7f3952c258c" message="++ Testing MUnit ++"/>
+	</flow>
+</mule>

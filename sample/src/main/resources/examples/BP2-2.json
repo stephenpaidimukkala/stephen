@@ -1,0 +1,48 @@
+[
+  {
+    "category": "books",
+	"unit": "NA",
+	"stock": [
+				{
+				"count": 1,
+				"label": "java"
+				},
+				{
+				"count": 3,
+				"label": "mule"
+				},
+				{
+				"count": 5,
+				"label": "design patterns"
+				}
+			 ]
+  },
+  {
+    "category": "veggies",
+	"unit": "KG",
+	"stock": [
+				{
+				"count": 100,
+				"label": "lady finger"
+				},
+				{
+				"count": 40,
+				"label": "brinjal"
+				}
+			 ]
+  },
+  {
+    "category": "Toys",
+	"unit": "NA",
+	"stock": [
+				{
+				"count": 10,
+				"label": "car"
+				},
+				{
+				"count": 50,
+				"label": "bike"
+				}
+			 ]
+  }
+]
