@@ -1,10 +1,10 @@
 {
   "configs": [
-    "stephentest.xml"
+    "dataweave.xml"
   ],
   "secureProperties": [],
   "redeploymentEnabled": true,
-  "name": "com.mycompany:stephentest:1.0.0-SNAPSHOT",
+  "name": "com.mycompany:dataweave:1.0.0-SNAPSHOT",
   "minMuleVersion": "4.2.2-hf2",
   "requiredProduct": "MULE",
   "classLoaderModelLoaderDescriptor": {
@@ -12,9 +12,8 @@
     "attributes": {
       "exportedPackages": [],
       "exportedResources": [
-        "api/stephentest.raml",
-        "log4j2.xml",
-        "stephentest.xml"
+        "dataweave.xml",
+        "log4j2.xml"
       ]
     }
   },

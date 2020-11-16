@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+	<flow name="dataweaveFlow" doc:id="623a1420-e15e-4437-9ffa-0555eb840d63" >
+		<logger level="INFO" doc:name="Logger" doc:id="bbb2eed8-baaa-4b31-9383-bef6e7cc10a1" message="#[payload]"/>
+	</flow>
+</mule>
